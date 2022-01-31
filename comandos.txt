@@ -1,0 +1,11 @@
+#rodar projeto vue 2
+npm run serve
+
+#instalar vue router
+npm install vue-router
+
+#instalar vuex - para estados de aplicacao
+npm install vuex
+
+#instalar vuetify - clone material gooogle
+vue add vuetify
