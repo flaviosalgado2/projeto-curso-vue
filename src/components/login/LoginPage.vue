@@ -6,9 +6,9 @@
 
                 <v-text-field label="Token" v-model="token"></v-text-field>
 
-                <v-btn depressed dark block color="green" class="mb-2" @click="login">Login</v-btn>
+                <v-btn depressed dark block color="primary" class="mb-2" @click="login">Login</v-btn>
 
-                <v-btn text @click="loginAsGuest">
+                <v-btn text color="secundary" @click="loginAsGuest">
                     Entrar como visitante
                 </v-btn>
             </v-col>
@@ -21,13 +21,14 @@
         name: 'LoginPage',
         data(){
             return{
-                token: '',
+                token: 'AIzaSyC7Yhf2ECP70oE5wX0eZWee-5fNTay_oUg',
             };
         },
         methods:{
             login(){
                 if(this.token){
                     this.$store.commit('setAuthToken', this.token);
+                    this.$store.commit('setLogged', true);
                     this.$router.push('/book');
                 }else{
                     
@@ -35,6 +36,7 @@
                 }
             },
             loginAsGuest(){
+                this.$store.commit('setLogged', true);
                 this.$router.push('/book');
             },
         },

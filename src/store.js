@@ -9,6 +9,7 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         authToken: '',
+        logged: false,
         message: {
             text: '',
             type: '',
@@ -18,6 +19,9 @@ export default new Vuex.Store({
 
         setAuthToken(state, payload) {
             state.authToken = payload;
+        },
+        setLogged(state, payload) {
+            state.logged = payload;
         },
         showErrorMessage(state, payload) {
             state.message = {

@@ -9,3 +9,9 @@ npm install vuex
 
 #instalar vuetify - clone material gooogle
 vue add vuetify
+
+#instalar vuetify colors theme
+npm install --save vuetify/lib/colors
+
+#instalar biblioteca axios - facilita realizar requisicoes para aplicacao
+npm i axios
