@@ -6,38 +6,17 @@
             </v-col>
         </v-row>
 
-        <v-row>
-            <v-col v-for="(book, i) in bookList" :key="i" cols="12" md="3" lg="2">
-                <v-card class="mx-auto">
-                    <v-card-title>{{ book.volumeInfo.title }}</v-card-title>
-                    <v-card-title>{{ book.volumeInfo.previewLink }}</v-card-title>
-
-                    <v-card-actions>
-                        <v-btn text small color="primary">Ver Detalhes</v-btn>
-                    </v-card-actions>
-                </v-card>
-            </v-col>
-        </v-row>
+        <book-list />
     </v-container>
 </template>
 
 <script>
 
-    const axios = require('axios');
+    import BookList from './BookList.vue';
 
     export default {
         name: 'BookListPage',
-        data(){
-            return{
-                bookList: [],
-            }
-        },
-        created(){
-            axios.get('https://www.googleapis.com/books/v1/volumes?q=flowers').then((response) => {
-                console.log(response);
-                this.bookList = response.data.items;
-            });
-        }
+        components: { BookList }        
     };
 </script>
 
