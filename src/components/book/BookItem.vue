@@ -1,7 +1,7 @@
 <template>   
     <v-card class="mx-auto book-card">
-        <div v-if="book.volumeInfo.imageLinks && book.volume.imageLinks.smallThumbnail" class="text-center pt-3">
-            <img :src="book.volumeInfo.imageLinks.smallThumbnail">
+        <div class="text-center pt-3">
+            <img :src="book.volumeInfo.imageLinks.smallThumbnail" />
         </div>
         <v-card-title>
             <span>{{ book.volumeInfo.title.substring(0, maxTitleLenght) }}</span>
@@ -21,13 +21,13 @@
 </template>
 
 <script>
-
     export default {        
-        name: 'BookList',
+        name: 'BookItem',
         props: {
             book: { type: Object, required: true },
         },
         created(){
+            console.log("book item: ");
             console.log(this.book);
         },
         data(){
@@ -37,7 +37,7 @@
         },
         methods: {
             goToDetails() {
-
+                this.$router.push(`/book/${this.book.id}`);
             },
             goToPreview(){
                 window.open(this.book.volumeInfo.previewLink, '_blank');
@@ -46,8 +46,6 @@
         
     }
 </script>
-
-
 
 <style scoped>
     .book-card {

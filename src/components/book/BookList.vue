@@ -48,7 +48,9 @@
                 if(this.textSearch){
                     this.searchOnGoing = true;
                     axios.get(`https://www.googleapis.com/books/v1/volumes?q=${this.textSearch}`).then((response) => {
-                    //console.log(response);
+                        
+                    console.log("teste: ");
+                    console.log(response);
                     
                     this.bookList = response.data.items;
                     this.searchOnGoing = false;
