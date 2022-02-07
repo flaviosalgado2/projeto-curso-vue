@@ -29,12 +29,20 @@
                     </v-chip>
                 </div>
 
-                <div class="mt-4">
+                <div class="mt-4" v-if="book.volumeInfo.categories">
                     <v-subheader>Categorias</v-subheader>
                     <v-divider class="mb-2" />
                     <v-chip v-for="(category, i) in book.volumeInfo.categories" :key="i" class="mr-3">
                         {{ category }}
                     </v-chip>
+                </div>
+
+                <div class="mt-4">
+                    <v-subheader>Ações</v-subheader>
+                    <v-divider class="mb-2" />
+                    <v-btn text color="primary" @click="goToPreview(book)">
+                        Ver Preview
+                    </v-btn>
                 </div>
             </v-col>
         </v-row>
@@ -43,10 +51,13 @@
 
 <script>
     
+    import bookService from './bookService';
+
     const axios = require('axios');
 
     export default {
         name: 'BookEntryPage',
+        mixins: [bookService],
         data(){
             return {
                 book: {},
@@ -64,7 +75,7 @@
         methods: {
             goBack(){
                 this.$router.push('/book');
-            },
+            }
         },
     };
 </script>
