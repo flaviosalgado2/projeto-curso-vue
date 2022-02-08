@@ -51,13 +51,12 @@
 
 <script>
     
+    import api from '../api/api';
     import bookService from './bookService';
-
-    const axios = require('axios');
 
     export default {
         name: 'BookEntryPage',
-        mixins: [bookService],
+        mixins: [api, bookService],
         data(){
             return {
                 book: {},
@@ -65,7 +64,7 @@
         },
         created() {
             //console.log(this.$route.params.id);
-            axios.get(`https://www.googleapis.com/books/v1/volumes/${this.$route.params.id}`).then((response) => {
+            this.get(`/volumes/${this.$route.params.id}`).then((response) => {
                 this.book = response.data;
 
                 console.log("page: ")

@@ -28,14 +28,15 @@
 </template>
 
 <script>
+    import api from '../api/api';
+
     import Loading from '../loading/Loading.vue';
     import BookItem from '../book/BookItem.vue';
-
-    const axios = require('axios');
 
     export default {
         components: { Loading, BookItem },
         name: 'BookList',
+        mixins: [api],
         data(){
             return{
                 textSearch: '',
@@ -47,7 +48,7 @@
             doSearch(){
                 if(this.textSearch){
                     this.searchOnGoing = true;
-                    axios.get(`https://www.googleapis.com/books/v1/volumes?q=${this.textSearch}`).then((response) => {
+                    this.get(`/volumes?q=${this.textSearch}`).then((response) => {
                         
                     console.log("teste: ");
                     console.log(response);
