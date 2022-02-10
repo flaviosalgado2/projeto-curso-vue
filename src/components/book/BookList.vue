@@ -1,15 +1,12 @@
-
-
-
 <template>
     <div>
         <v-row>
             <v-col cols="12">
-                <v-text-field v-model="textSearch" label="Pesquisa algo..." @input="doSearch"/>
+                <search-input-field @search="doSearch"/>
             </v-col>
         </v-row>
 
-        <v-row v-if="!textSearch" justify="center">
+        <v-row v-if="!bookList.length" justify="center">
             <v-col cols="12" md="4" class="text-center">
                 <p class="overline">Digite algo para iniciar a pesquisa.</p>
             </v-col>
@@ -32,9 +29,10 @@
 
     import Loading from '../loading/Loading.vue';
     import BookItem from '../book/BookItem.vue';
+    import SearchInputField from '../search/SearchInputField.vue';
 
     export default {
-        components: { Loading, BookItem },
+        components: { Loading, BookItem, SearchInputField },
         name: 'BookList',
         mixins: [api],
         data(){
@@ -45,10 +43,10 @@
             };
         },
         methods:{
-            doSearch(){
-                if(this.textSearch){
+            doSearch(textSearch){
+                if(textSearch){
                     this.searchOnGoing = true;
-                    this.get(`/volumes?q=${this.textSearch}`).then((response) => {
+                    this.get(`/volumes?q=${textSearch}`).then((response) => {
                         
                     console.log("teste: ");
                     console.log(response);

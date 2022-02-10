@@ -21,17 +21,20 @@
         name: 'LoginPage',
         data(){
             return{
-                token: 'AIzaSyC7Yhf2ECP70oE5wX0eZWee-5fNTay_oUg',
+                token: 'AIzaSyCirdQCiLhrvDhnf9WMbaMHFInaBJ7M73o',
             };
         },
         methods:{
+
             login(){
+                //colocando no storage do navegador o token
+                window.localStorage.authToken = this.token;
                 if(this.token){
+
                     this.$store.commit('setAuthToken', this.token);
-                    this.$store.commit('setLogged', true);
                     this.$router.push('/book');
                 }else{
-                    
+                    console.log("token nao existe");
                     this.$store.commit('showErrorMessage', 'Você deve informar um token');
                 }
             },

@@ -6,7 +6,7 @@
       <router-view />
     </v-content>
 
-    <Feedback />
+    <feedback />
   </v-app>
 </template>
 
@@ -18,6 +18,14 @@ import Feedback from './components/feedback/Feedback.vue';
 //AIzaSyC7Yhf2ECP70oE5wX0eZWee-5fNTay_oUg
 export default {
   name: 'App',
-  components: { Feedback, AppHeader }
+  components: { Feedback, AppHeader },
+  created(){
+
+    if(window.localStorage.authToken){
+      this.$store.commit('setAuthtoken', window.localStorage.authToken);
+    }else{
+      this.$router.push('/');
+    }
+  },
 };
 </script>
