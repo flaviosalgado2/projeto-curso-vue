@@ -30,8 +30,8 @@
                 //colocando no storage do navegador o token
                 window.localStorage.authToken = this.token;
                 if(this.token){
-
-                    this.$store.commit('setAuthToken', this.token);
+                    //this.$store.commit('setAuthToken', true);
+                    this.$store.commit('setLogged', true);
                     this.$router.push('/book');
                 }else{
                     console.log("token nao existe");
@@ -39,7 +39,13 @@
                 }
             },
             loginAsGuest(){
+                localStorage.removeItem('authToken');
                 this.$store.commit('setLogged', true);
+                this.$store.commit('setPerfil', 'visitante');
+                console.log("valor store == ");
+                console.log(this.$store.getters.perfil);
+                console.log("valor store verdadeiro == ");
+                console.log(this.$store.getters.perfil == 'visitante');
                 this.$router.push('/book');
             },
         },

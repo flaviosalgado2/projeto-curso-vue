@@ -8,12 +8,14 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        authToken: '',
+        authToken: undefined,
         logged: false,
         message: {
             text: '',
             type: '',
-        }
+        },
+        chaveToken: undefined,
+        perfil: undefined
     },
     mutations: {
 
@@ -33,9 +35,17 @@ export default new Vuex.Store({
             };
         },
         setAuthToken(state, payload) {
-            window.localStorage.authToken = payload;
             state.authToken = payload;
-            state.logged = Boolean(state.authToken);
         },
+        setChaveToken(state, payload) {
+            state.chaveToken = payload;
+        },
+        setPerfil(state, payload) {
+            state.perfil = payload;
+        }
     },
+    getters: {
+        perfil: state => state.perfil,
+
+    }
 });

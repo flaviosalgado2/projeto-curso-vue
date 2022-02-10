@@ -21,11 +21,24 @@ export default {
   components: { Feedback, AppHeader },
   created(){
 
+    console.log("valor store");
+    console.log(this.$store.getters.perfil);
+
     if(window.localStorage.authToken){
-      this.$store.commit('setAuthtoken', window.localStorage.authToken);
-    }else{
-      this.$router.push('/');
+      this.$store.commit('setAuthToken', window.localStorage.authToken);
+      this.$store.commit('setLogged', Boolean(window.localStorage.authToken));
     }
+    
+    console.log("sera verdadeiro: ");
+    console.log(this.$store.getters.perfil === 'visitante');
+
+    // else if(this.$store.getters.perfil == 'visitante'){
+    //   this.$store.commit('setLogged', true);
+    // }
+    // else{
+    //   //expulsa
+    //   this.$router.push('/');
+    // }
   },
 };
 </script>

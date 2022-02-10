@@ -6,7 +6,7 @@
 
         <v-toolbar-items v-if="$store.state.logged">
             <v-btn text @click="goToBookList">Livros</v-btn>
-            <v-btn v-if="$store.state.authToken" text @click="goToBookColletion">Minha Coleção</v-btn>
+            <v-btn v-if="!($store.state.perfil == 'visitante')" text @click="goToBookColletion">Minha Coleção</v-btn>
             <v-btn text @click="logout">Sair</v-btn>
         </v-toolbar-items>
     </v-app-bar>
@@ -24,8 +24,9 @@ export default {
             this.$router.push('/colletion');
         },
         logout(){
-            this.$store.commit('setAuthToken', '');
-            //this.$store.commit('setLogged', false);
+            //this.$store.commit('setAuthToken', '');
+            this.$store.commit('setLogged', false);
+            this.$store.commit('setPerfil', undefined);
             this.$router.push('/');
         }
     }
