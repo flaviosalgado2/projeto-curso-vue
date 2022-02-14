@@ -21,7 +21,7 @@ export default {
             this.$router.push('/book');
         },
         goToBookColletion(){
-            this.$router.push('/colletion');
+            this.$router.push('/library');
         },
         logout(){
             //this.$store.commit('setAuthToken', '');

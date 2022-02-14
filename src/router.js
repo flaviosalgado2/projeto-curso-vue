@@ -4,6 +4,7 @@ import Router from "vue-router";
 import LoginPage from './components/login/LoginPage.vue';
 import BookListPage from './components/book/BookListPage.vue';
 import BookEntryPage from './components/book/BookEntryPage.vue';
+import LibraryListPage from './components/library/LibraryListPage';
 
 //gerenciador de rotas do vue
 Vue.use(Router);
@@ -23,6 +24,11 @@ const routes = [{
         path: '/book/:id',
         name: 'bookEntry',
         component: BookEntryPage
+    },
+    {
+        path: '/library',
+        name: 'libraryList',
+        component: LibraryListPage
     },
 ];
 
