@@ -1,23 +1,19 @@
-const axios = require('axios');
-
-const axiosInstance = axios.create({
-    baseURL: 'https://www.googleapis.com/books/v1',
-});
+import apiInstance from './apiInstance.js';
 
 export default {
     name: 'api',
     methods: {
         get(url) {
-            return axiosInstance.get(url);
+            return apiInstance.get(url);
         },
         post(url, data) {
-            return axiosInstance.post(url, data);
+            return apiInstance.post(url, data);
         },
         put(url, data) {
-            return axiosInstance.put(url, data);
+            return apiInstance.put(url, data);
         },
         delete(url) {
-            return axiosInstance.delete(url);
+            return apiInstance.delete(url);
         },
 
     },

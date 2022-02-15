@@ -1,8 +1,15 @@
 <template>   
     <v-card class="mx-auto book-card">
-        <v-card-title>
+        <v-card-title class="pb-3">
             <span>{{ shelf.title }}</span>
         </v-card-title>
+
+        <v-card-text>
+            <span>
+                Número de Livros:
+                <span class="font-weight-medium ml-1">{{ shelf.volumeCount }}</span>
+            </span>
+        </v-card-text>
     </v-card>
 </template>
 

@@ -4,7 +4,7 @@ import Router from "vue-router";
 import LoginPage from './components/login/LoginPage.vue';
 import BookListPage from './components/book/BookListPage.vue';
 import BookEntryPage from './components/book/BookEntryPage.vue';
-import LibraryListPage from './components/library/LibraryListPage';
+import LibraryListPage from './components/library/LibraryListPage.vue';
 
 //gerenciador de rotas do vue
 Vue.use(Router);

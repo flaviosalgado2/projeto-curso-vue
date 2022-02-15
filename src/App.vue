@@ -12,6 +12,8 @@
 
 <script>
 
+import apiConfig from './components/api/apiConfig';
+
 import AppHeader from './components/header/AppHeader.vue';
 import Feedback from './components/feedback/Feedback.vue';
 
@@ -19,7 +21,10 @@ import Feedback from './components/feedback/Feedback.vue';
 export default {
   name: 'App',
   components: { Feedback, AppHeader },
+  mixins: [apiConfig],
   created(){
+
+    this.createInterceptors();
 
     console.log("valor store");
     console.log(this.$store.getters.perfil);

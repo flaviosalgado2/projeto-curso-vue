@@ -18,19 +18,23 @@
     import Loading from '../loading/Loading.vue';
     import LibraryItem from './LibraryItem.vue';
 
-    export default {
+    export default { //101081075395919501212
        name: 'LibraryList',
        components: { Loading, LibraryItem },
        mixins: [api],
        data() {
            return {
-               shelfList: [{ title: 'Estante de Teste' }],
+               shelfList: [],
                searchOnGoing: false,
            }
        },
        created() {
-           this.get('').then((response) => {
-               console.log(response);
+           this.searchOnGoing = true;
+           this.get('/users/101081075395919501212/bookshelves').then((response) => {
+
+               this.shelfList = response.data.items;
+
+               this.searchOnGoing = false;
            });
        }
     }
