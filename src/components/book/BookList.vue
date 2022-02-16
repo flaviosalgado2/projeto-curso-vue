@@ -48,11 +48,13 @@
                     this.searchOnGoing = true;
                     this.get(`/volumes?q=${textSearch}`).then((response) => {
                         
-                    console.log("teste: ");
-                    console.log(response);
+                    // console.log("teste: ");
+                    // console.log(response);
                     
                     this.bookList = response.data.items;
                     this.searchOnGoing = false;
+                    }).catch(() => {
+                        this.searchOnGoing = false;
                     });
                 }else{
                     this.bookList = [];
