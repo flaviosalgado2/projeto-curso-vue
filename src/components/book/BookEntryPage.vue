@@ -1,10 +1,7 @@
 <template>
     <v-container fluid>
-        <v-row justify="end">
-            <v-col cols="12" md="2">
-                <v-btn text block @click="goBack">Voltar</v-btn>
-            </v-col>
-        </v-row>
+        
+        <back-button />
 
         <v-row v-if="book && book.volumeInfo">
             
@@ -52,9 +49,11 @@
 <script>
     
     import api from '../api/api';
+    import BackButton from '../navigation/BackButton.vue';
     import bookService from './bookService';
 
     export default {
+        components: { BackButton },
         name: 'BookEntryPage',
         mixins: [api, bookService],
         data(){

@@ -12,22 +12,25 @@
         </v-card-text>
 
         <v-card-actions>
-            <v-btn text small color="primary" @click="goToDetails">Ver Detalhes</v-btn>
+            <forward-navigation-button :url="entryPageUrl" />
         </v-card-actions>
     </v-card>
 </template>
 
 <script>
+    import ForwardNavigationButton from '../navigation/ForwardNavigationButton.vue';
+
     export default {        
         name: 'LibraryItem',
+        components: { ForwardNavigationButton },
         props: {
             shelf: { type: Object, required: true },
         },
-        methods: {
-            goToDetails() {
-                this.$router.push(`/library/${this.shelf.id}`);
+        computed: {
+            entryPageUrl() {
+                return `/library/${this.shelf.id}`;
             }
-        }       
+        }    
     }
 </script>
 
