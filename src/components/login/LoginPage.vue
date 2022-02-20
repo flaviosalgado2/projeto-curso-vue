@@ -4,6 +4,8 @@
             <v-col col="12" md="4" lg="3" class="text-center">
                 <h6 class="display-1 text-uppercase">Login</h6>
 
+                <v-text-field label="ID do Usuário" v-model="userId"></v-text-field>
+
                 <v-text-field label="Token" v-model="token"></v-text-field>
 
                 <v-btn depressed dark block color="primary" class="mb-2" @click="login">Login</v-btn>
@@ -21,6 +23,7 @@
         name: 'LoginPage',
         data(){
             return{
+                userId: '101081075395919501212',
                 token: 'AIzaSyCirdQCiLhrvDhnf9WMbaMHFInaBJ7M73o',
             };
         },
@@ -29,13 +32,14 @@
             login(){
                 //colocando no storage do navegador o token
                 window.localStorage.authToken = this.token;
-                if(this.token){
+                window.localStorage.userId = this.userId;
+                if(this.token && this.userId){
                     //this.$store.commit('setAuthToken', true);
                     this.$store.commit('setLogged', true);
                     this.$router.push('/book');
                 }else{
                     console.log("token nao existe");
-                    this.$store.commit('showErrorMessage', 'Você deve informar um token');
+                    this.$store.commit('showErrorMessage', 'Você deve informar um token e ID de Usuário');
                 }
             },
             loginAsGuest(){

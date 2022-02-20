@@ -8,39 +8,17 @@
             <!-- <v-col v-if="(book.volumeInfo.imageLinks) && (book.volume.imageLinks.smallThumbnail)" cols="12" md="3" class="text-center">
                 <img :src="book.volumeInfo.imageLinks.smallThumbnail" />
             </v-col> -->
+            <book-entry-image :book="book" />
             
             <v-col cols="12" md="9">
-                <h4 class="display-1">{{ book.volumeInfo.title }}</h4>
-                <h5 class="headline">{{ book.volumeInfo.subtitle || 'Sem descrição' }}</h5>
 
-                <p class="mt-2">{{ book.volumeInfo.description }}</p>
+                <book-entry-data :book="book" />
 
-                <div>
-                    <v-subheader>Autores</v-subheader>
-                    <v-divider class="mb-2" />
-                    <v-chip v-for="(author, i) in book.volumeInfo.authors" :key="i" pill class="mr-3">
-                        <v-avatar left color="primary white--text">
-                            {{ author.substring(0, 1) }}
-                        </v-avatar>
-                        {{ author }}
-                    </v-chip>
-                </div>
+                <book-entry-autors :book="book" />
 
-                <div class="mt-4" v-if="book.volumeInfo.categories">
-                    <v-subheader>Categorias</v-subheader>
-                    <v-divider class="mb-2" />
-                    <v-chip v-for="(category, i) in book.volumeInfo.categories" :key="i" class="mr-3">
-                        {{ category }}
-                    </v-chip>
-                </div>
+                <book-entry-categories :book="book" />
 
-                <div class="mt-4">
-                    <v-subheader>Ações</v-subheader>
-                    <v-divider class="mb-2" />
-                    <v-btn text color="primary" @click="goToPreview(book)">
-                        Ver Preview
-                    </v-btn>
-                </div>
+                <book-entry-actions :book="book" />
             </v-col>
         </v-row>
     </v-container>
@@ -51,9 +29,14 @@
     import api from '../api/api';
     import BackButton from '../navigation/BackButton.vue';
     import bookService from './bookService';
+    import BookEntryImage from './BookEntryImage.vue';
+    import BookEntryData from './BookEntryData.vue';
+    import BookEntryAutors from './BookEntryAutors.vue';
+    import BookEntryCategories from './BookEntryCategories.vue';
+    import BookEntryActions from './BookEntryActions.vue';
 
     export default {
-        components: { BackButton },
+        components: { BackButton, BookEntryImage, BookEntryData, BookEntryAutors, BookEntryCategories, BookEntryActions },
         name: 'BookEntryPage',
         mixins: [api, bookService],
         data(){
